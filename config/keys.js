@@ -5,6 +5,6 @@ module.exports={
         clientSecret: 'qA8s7deM5UBFehKbJxFFBKLD'
     },
     session:{
-        cookieKey: 'keyforcookies'
+        cookieKey: 'keyforcookiessesion'
     }
 }
