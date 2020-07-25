@@ -2,8 +2,8 @@ const express = require('express');
 const app = express();
 
 //set database
-const mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
+const mongoose = require('mongoose');mongoose.Promise = global.Promise;
+
 //conect database
 mongoose.connect('mongodb://127.0.0.1/oauth',{
     useUnifiedTopology: true,
