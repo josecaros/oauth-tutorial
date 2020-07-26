@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-﻿# Código gitignore para evitar procesar los directorios de las dependencias
-
-node_modules
-=======
 # Código gitignore para evitar procesar los directorios de las dependencias
 node_modules
 config/keys.js
->>>>>>> 9de2faa76621c12f741c561b78bf6155523679ef
