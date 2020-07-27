@@ -1,10 +1,20 @@
 const express = require('express');
 const app = express();
-
-//set database
+const keys = require('./config/keys');
 const mongoose = require('mongoose');mongoose.Promise = global.Promise;
+const cookieSesion = require('cookie-session');
+const passport = require('passport');
 
-//conect database
+app.use(cookieSesion({
+    maxAge: 24*60*60*1000,
+    keys: [keys.session.cookieKey]
+}));
+
+//Iniciar passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+//set database and conect database
 mongoose.connect('mongodb://127.0.0.1/oauth',{
     useUnifiedTopology: true,
     useNewUrlParser: true,
@@ -27,5 +37,7 @@ app.listen(3500, ()=>{
 });
 
 const authRoutes = require('./routes/oauth');
+const profileRoutes = require('./routes/profile.route');
 
 app.use('/auth', authRoutes);
+app.use('/profile', profileRoutes);

@@ -4,14 +4,14 @@ const keys = require('./keys');
 var User = require('../model/user');
 
 
-/*passport.serializeUser((user, done)=>{
+passport.serializeUser((user, done)=>{
     done(null,user.id);
 });
 passport.deserializeUser((id, done)=>{
     User.findById(id).then((user)=>{
-        done(null,user.id);
+        done(null,user);
     });
-})*/
+})
 
 passport.use(
     new GoogleStrategy({
@@ -27,7 +27,7 @@ passport.use(
             if(currentUser){
                 //Ya tenemos el usuario registrado
                 console.log('Ya esta registrados user: '+ currentUser);
-                //done(null, currentUser);
+                done(null, currentUser);
             }else{
                 //No tenemos el usuario
                 var user=new User({
@@ -38,7 +38,7 @@ passport.use(
                 user.save()
                 .then(user => {
                     console.log('Usuario creado'+user);
-                    //done(null, user);
+                    done(null, user);
                 }).catch(err => {
                     console.log({mensaje: 'error creando usuario'});
                 });
